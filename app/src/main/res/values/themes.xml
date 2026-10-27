@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Базовая тема окна до запуска Compose: тёмный фон, без ActionBar. -->
+    <style name="Theme.NOXVault" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/nox_background</item>
+        <item name="android:statusBarColor">@color/nox_background</item>
+        <item name="android:navigationBarColor">@color/nox_background</item>
+    </style>
+</resources>

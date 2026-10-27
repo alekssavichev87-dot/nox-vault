@@ -1,0 +1,34 @@
+name: ✨ Предложение функции
+description: Идея улучшения NOX Vault
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую задачу нужно решить?
+      description: Опишите пользовательский сценарий, а не только техническое решение.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Предлагаемое решение
+      description: Как, по-вашему, функция должна выглядеть и работать?
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Влияние на безопасность
+      description: Потребуются ли сеть, новые разрешения, хранение новых данных или изменение формата хранилища?
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы
+      description: Как вы решаете задачу сейчас?
+    validations:
+      required: false

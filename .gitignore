@@ -1,0 +1,53 @@
+# ---------- Android / Gradle ----------
+.gradle/
+.kotlin/
+**/build/
+app/build/
+app/debug/
+app/release/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.idsig
+*.hprof
+
+# ---------- Android Studio / IntelliJ ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ---------- Локальная конфигурация ----------
+local.properties
+key.properties
+secrets.properties
+.env
+.env.*
+
+# ---------- Ключи подписи: НИКОГДА не загружать в Git ----------
+*.jks
+*.keystore
+*.pepk
+keystore/
+
+# ---------- Пользовательские секреты и экспорты: НИКОГДА не загружать в Git ----------
+# .nox — резервные копии хранилища, CSV — возможные экспорты паролей из браузера.
+*.nox
+*.csv
+
+# ---------- Операционные системы и редакторы ----------
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------- Логи ----------
+*.log

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Конфигурация службы автозаполнения.
+    Inline-подсказки клавиатуры в этой версии не заявляем: Android покажет
+    классический выпадающий список подсказок над полем ввода.
+-->
+<autofill-service xmlns:android="http://schemas.android.com/apk/res/android" />

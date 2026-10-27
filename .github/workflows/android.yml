@@ -31,11 +31,31 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
+      # Не используем android-actions/setup-android: его поведение по умолчанию
+      # пытается установить устаревший пакет "tools", которого новый sdkmanager
+      # больше не находит (Warning: Failed to find package 'tools').
+      # На GitHub-hosted Ubuntu Android SDK уже предустановлен; просто
+      # доустанавливаем нужную платформу его собственным sdkmanager.
       - name: Install Android SDK 35
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+        shell: bash
+        run: |
+          set -euo pipefail
+          SDKMANAGER=""
+          if command -v sdkmanager >/dev/null 2>&1; then
+            SDKMANAGER="$(command -v sdkmanager)"
+          else
+            SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+            if [ -n "$SDK_ROOT" ]; then
+              SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager 2>/dev/null | sort -V | tail -n 1)"
+            fi
+          fi
+          if [ -z "$SDKMANAGER" ]; then
+            echo "sdkmanager not found on this runner"
+            exit 1
+          fi
+          echo "Using sdkmanager: $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
